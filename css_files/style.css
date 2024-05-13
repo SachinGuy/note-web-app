@@ -1,0 +1,148 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+/* Top and Bottom Nav Bars */
+ul {
+    list-style-type: none;
+    position:fixed;
+    top: 0;
+    width: 100%;
+    overflow: hidden;
+    background-color: rgb(0, 0, 0);
+    font-size: medium;
+    height: 70px;
+}
+.li-float-left{
+    float: left;
+}
+.li-float-right{
+    float:right;
+}
+li a{
+    display: block;
+    padding: 25px 10px;
+    color: white;
+    text-decoration: none;
+}
+a:hover{
+    background-color: rgb(0, 181, 204);
+}
+.logo-img{
+    object-fit: cover;
+    margin: 8px;
+    width: 172px;
+    height: 40px;
+}
+.bottomNav{
+    background-color: rgb(0, 0, 0);
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding: 8px 0px;
+    font-size: medium;
+    height: 70px;
+}
+.copyrightTxt{
+    color: white;
+    display: block;
+    text-align: center;
+}
+/*Form*/
+body{
+    padding-top: 70px; /*Equal to top nav*/
+    padding-bottom: 70px; /*Equal to bottom nav*/
+}
+.registrationForm h2 {
+    text-align: center;
+    text-transform: uppercase;
+}
+.loginForm h2 {
+    text-align: center;
+    text-transform: uppercase;
+}
+div.formContainer{
+    width: 550px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    padding: 14px;
+    border-radius: 7px;
+    margin-top: 14px;
+    margin-right: auto;
+    margin-left: auto;
+    background-color: rgb(0, 181, 204);
+}
+input{
+    width: 100%;
+    padding: 14px 7px;
+    margin: 7px 0px;
+    box-sizing: border-box;
+}
+input[type=checkbox]{
+    width: auto;
+    margin-right: 7px;
+}
+input[type=text], input[type=password], input[type=email]{
+    font-size: 14px;
+    border-radius: 7px;
+}
+.iconMsg{
+    color: blue;
+}
+
+input[type=submit]{
+    background-color: black;
+    border: none;
+    border-radius: 7px;
+    color: white;
+    font-size: large;
+    font-weight: 400;
+    cursor: pointer;
+}
+/*Error Messages*/
+div.errorContainer{
+    background-color: rgba(255, 192, 203, 0.619);
+    color: crimson;
+    text-align: center;
+    width: 550px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    padding: 14px;
+    border-radius: 7px;
+    margin-top: 14px;
+    margin-right: auto;
+    margin-left: auto;
+}
+/*Link Style*/
+form.loginForm a{
+    color: white;
+    text-align: left;
+    text-decoration: none;
+}
+form.loginForm a:hover{
+    color:black;
+    text-decoration: underline;
+}
+/*Logout Style*/
+li.logout a{
+    color:red;
+}
+li.logout a:hover{
+    color:red;
+    background-color: rgba(255, 0, 76, 0.517);
+}
+/*welcome page*/
+.welcomeContainer{
+    width: 550px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    padding: 14px;
+    border-radius: 7px;
+    margin-top: 14px;
+    margin-right: auto;
+    margin-left: auto;
+    background-color: rgb(0, 181, 204);
+}
+.welcomeMsg{
+    color: black;
+    text-align: center;
+}
+
