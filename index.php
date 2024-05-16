@@ -25,21 +25,56 @@ if(!isset($_SESSION['userData']))
                 <img class = 'logo-img'src='assets/sachinlogo.png' alt='Sachin Timilsina Logo'>
             </li>
             <li class='li-float-right logout'><a href='#' onclick="logoutConfirmation();">Logout</a></li>
-            <li class='li-float-right'><a href='index.php'>Home</a></li>
+            <?php 
+            echo "<li class= 'li-float-right'><a class='welcomeMsg'>".
+            "Greetings ". $_SESSION['userData']['userName']. " | ". $_SESSION["userData"]["email"]."</a></li>"
+            ?>
         </ul>
     </div>
-    <?php
-    if(isset($_SESSION['userData']))
-    {
-        echo"
-        <div class= 'welcomeContainer'>
-            <p class= 'welcomeMsg'>".
-            "Greetings ". $_SESSION['userData']['userName']. ". Welcome to your page that you signed in with ". $_SESSION["userData"]["email"].
-            ".</p>
+    
+    <!-- Take Notes Section-->
+    <div class="noteContainer">
+        <h2>Take Note</h2>
+        <form action="model/noteProcessing.php" method="post">
+            <input type="text" name="noteTitle" id="noteTitle" placeholder="Title" required>
+            <textarea name="noteContent" id="noteContent" placeholder="Write something..."></textarea>
+            <div class="noteAction">
+                <input type="submit" name="submitNote" value="Save">
+                <button id="cancelNoteBtn">Cancel</button>
+            </div>
+            
+        </form>
+    </div>
+    <!-- Display Notes Section -->
+    <div class="notesContainer">
+        <h1>Notes Section:</h1>
+        <div class="notesInnerContainer">
+        <?php
+        if(!empty($_SESSION['userData']['userNotes']))
+        {
+            foreach ($_SESSION['userData']['userNotes'] as $notes) {
+                echo"
+                <div class='singleNoteContainer'>".
+                "<form action='model/editNote.php' method='post'>".
+                    "<input type='hidden' name='noteId' value='".$notes['note_id'] ."'>".
+                    "<span class = 'singleNoteDate' name='notesDate'> Created At: ". $notes['created_at']."</span>".
+                    "<textarea class= 'singleNoteField singleNoteTitle' name='notesTitle' id ='notesTitle' disabled>".$notes['title']."</textarea><br>".
+                    "<textarea class= 'singleNoteField singleNoteContent' name='notesContent' id ='notesContent' disabled>".$notes['content']."</textarea>".
+                    "<button class='singleNoteBtn' name='singleNoteBtn'>Edit</button>".
+                "</form>".
+                "</div>";
+            }
+        }else
+        {
+            echo"
+                <div class='singleNoteContainer'>".
+                    "<textarea class= 'singleNoteField' name='notesTitle'>No notes made till now.</textarea>".
+                "</div>";
+        }
+        
+        ?>
         </div>
-        ";
-    }
-    ?>
+    </div>
     <script>
         function logoutConfirmation()
         {
@@ -49,6 +84,17 @@ if(!isset($_SESSION['userData']))
             }
 
         }
+        //Handle note cancel button
+        document.getElementById('cancelNoteBtn').addEventListener('click', 
+            function(event){
+                //Prevent btn default behavior
+                event.preventDefault();
+                let title =document.getElementById('noteTitle');
+                let content =document.getElementById('noteContent');
+                title.value = "";
+                content.value = "";
+            }
+        )
     </script>
 <?php
 require_once('assets/bottomHtml.php');

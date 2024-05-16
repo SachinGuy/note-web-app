@@ -22,7 +22,7 @@ require_once("assets/topHtml.php");
     }
 ?>
     <div class="formContainer">
-        <form class="loginForm" action="userProcessing.php" method="post">
+        <form class="loginForm" action="model/userProcessing.php" method="post">
             <h2>Login</h2>
             <label for="email">Email</label><br>
             <input type="email" name="email" id="email" placeholder="Enter email" required><br>

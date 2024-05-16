@@ -18,23 +18,15 @@ if(isset($_POST["registrationSubmit"]))
     {
         array_push($inputErrors, "No field can be empty.");
     }
-    //Check if username already in database & password confirmation
-    $sql = "SELECT * FROM `users` WHERE `username` = ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("s", $username);
-    $stmt->execute();
-    $usernameResult = $stmt->get_result();
-    
     //Check if email already in use.
     $sql = "SELECT * FROM `users` WHERE `email` = ?";
     $stmt = $conn->prepare($sql);
-    $stmt->prepare($sql);
     $stmt->bind_param("s", $email);
     $stmt->execute();
     $emailResult = $stmt->get_result();
 
     //Check all input with default error message.
-    if($usernameResult->num_rows > 0 || $password != $confirmPassword || $emailResult->num_rows > 0)
+    if($password != $confirmPassword || $emailResult->num_rows > 0)
     {
         array_push($inputErrors,"Credentials doesn't match.");
     }
@@ -43,7 +35,7 @@ if(isset($_POST["registrationSubmit"]))
     {
         $_SESSION["inputErrors"] = $inputErrors;
         //redirect to registration
-        header('Location: registration.php');
+        header('Location: ../registration.php');
         $conn->close();
         exit();
     }else
@@ -56,7 +48,7 @@ if(isset($_POST["registrationSubmit"]))
         $stmt->bind_param("sss", $username, $email, $hashedPassword);
         $stmt->execute();
         //Move on to login page.
-        header('Location: login.php');
+        header('Location: ../login.php');
         $conn->close();
         exit();
     }
@@ -77,7 +69,7 @@ if(isset($_POST["registrationSubmit"]))
     {
         $_SESSION["inputErrors"] = $inputErrors;
         //redirect to login
-        header('Location: login.php');
+        header('Location: ../login.php');
         $conn->close();
         exit();
     }else
@@ -95,9 +87,26 @@ if(isset($_POST["registrationSubmit"]))
             $password_verification = password_verify($password, $row["password"]);
             if($password_verification)
             {
+                $_SESSION["userData"]["userId"] = $row["user_id"];
                 $_SESSION["userData"]["userName"] = $row["username"];
                 $_SESSION["userData"]["email"] = $row["email"];
-                header('Location: index.php');
+                //Store notes in session
+                $sql = "SELECT * FROM `notes` WHERE `user_id` = ?";
+                $stmt = $conn->prepare($sql);
+                $stmt->bind_param("s", $row['user_id']);
+                $stmt->execute();
+                $notesResult = $stmt->get_result();
+                $notes = [];
+                if($notesResult->num_rows > 0)
+                {
+                    while ($notesRow = $notesResult->fetch_assoc()) {
+                        array_push($notes, $notesRow);
+                        $_SESSION['userData']['userNotes'] = $notes;
+                    }
+                }else{//If no notes
+                    $_SESSION['userData']['userNotes'] = null;
+                }
+                header('Location: ../index.php');
                 $conn->close();
                 exit();
             }else //If password doesn't match.
@@ -105,7 +114,7 @@ if(isset($_POST["registrationSubmit"]))
                 array_push($inputErrors, "Credentials doesn't match.");
                 $_SESSION["inputErrors"] = $inputErrors;
                 //redirect to login
-                header('Location: login.php');
+                header('Location: ../login.php');
                 $conn->close();
                 exit();
             }
@@ -114,7 +123,7 @@ if(isset($_POST["registrationSubmit"]))
             array_push($inputErrors, "Credentials doesn't match.");
             $_SESSION["inputErrors"] = $inputErrors;
             //redirect to login
-            header('Location: login.php');
+            header('Location: ../login.php');
             $conn->close();
             exit();
         }

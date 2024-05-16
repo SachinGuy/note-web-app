@@ -20,6 +20,9 @@ ul {
 .li-float-right{
     float:right;
 }
+li a.welcomeMsg:hover{
+    background-color: black;
+}
 li a{
     display: block;
     padding: 25px 10px;
@@ -49,7 +52,7 @@ a:hover{
     display: block;
     text-align: center;
 }
-/*Form*/
+/*Forms Registration & login*/
 body{
     padding-top: 70px; /*Equal to top nav*/
     padding-bottom: 70px; /*Equal to bottom nav*/
@@ -130,19 +133,114 @@ li.logout a:hover{
     color:red;
     background-color: rgba(255, 0, 76, 0.517);
 }
-/*welcome page*/
-.welcomeContainer{
-    width: 550px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+/*
+Take Note Styling
+*/
+.noteContainer
+{
+    background-color: rgba(0, 194, 204, 0.433);
+    margin-top: 14px;
+    margin-left: 14px;
+    width: 95%;
     padding: 14px;
     border-radius: 7px;
-    margin-top: 14px;
-    margin-right: auto;
-    margin-left: auto;
-    background-color: rgb(0, 181, 204);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
-.welcomeMsg{
-    color: black;
+.noteContainer input[type="text"]
+{
+    font-size: 25px;
+}
+.noteContainer textarea{
+    resize: vertical;
+    padding: 7px;
+    width: 99%;
+    font-size: 14px;
+    min-height: 100px;
+    border-radius: 7px;
+}
+.noteAction{
+    display: flex;
+    column-gap: 7px;
+}
+.noteAction input[type="submit"]{
+    width: 50%;
+}
+.noteAction button{
+    color: white;
+    background-color: red;
+    border: none;
+    border-radius: 7px;
+    font-size: large;
+    font-weight: 400;
+    cursor: pointer;
+    width: 50%;
+    margin: 7px 0;
+}
+.noteContainer h2{
     text-align: center;
+}
+/*Notes Section Styling*/
+.notesContainer{
+    margin-top: 14px;
+    margin-left: 14px;
+    margin-right: 14px;
+    padding: 14px;
+    width: 100%vh;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    background-color: rgb(207, 247, 251);
+}
+.notesInnerContainer{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    row-gap: 14px;
+}
+.singleNoteContainer{
+    background-color: rgba(0, 194, 204, 0.433);
+    margin-top: 14px;
+    margin-left: 14px;
+    width: 30%;
+    padding: 14px;
+    border-radius: 7px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+span.singleNoteDate{
+    display: block;
+    margin-bottom: 14px;
+    font-size: 16px;
+    color: rgb(36, 75, 74);
+}
+textarea.singleNoteField{
+    margin-top: 7px;
+    border-radius: 7px;
+    padding: 7px;
+    width: 98%;
+    resize: none;
+    background-color: white;
+    border: 1px solid ;
+}
+textarea.singleNoteTitle{
+    font-size: 22px;
+    font-weight: bolder;
+}
+textarea.singleNoteContent{
+    font-size: 14px;
+    color: rgb(37, 37, 37);
+}
+button.singleNoteBtn{
+    padding: 14px;
+    border-radius: 7px;
+    color: white;
+    background-color: rgb(82, 82, 82);
+    width: 100%;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+}
+input.deleteBtn{
+    color: white;
+    background-color: red;
 }
 

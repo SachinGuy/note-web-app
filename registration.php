@@ -24,7 +24,7 @@ require_once("assets/topHtml.php");
 
 ?>
     <div class="formContainer">
-        <form class="registrationForm" action="userProcessing.php" method="post">
+        <form class="registrationForm" action="model/userProcessing.php" method="post">
             <h2>Register</h2>
             <label for="username">Username</label><br>
             <input type="text" name="username" id="username" placeholder="Enter username" required><br>
