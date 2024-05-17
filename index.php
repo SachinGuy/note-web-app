@@ -57,7 +57,7 @@ if(!isset($_SESSION['userData']))
                 <div class='singleNoteContainer'>".
                 "<form action='model/editNote.php' method='post'>".
                     "<input type='hidden' name='noteId' value='".$notes['note_id'] ."'>".
-                    "<span class = 'singleNoteDate' name='notesDate'> Created At: ". $notes['created_at']."</span>".
+                    "<span class = 'singleNoteDate' name='notesDate'> Created At: ". $notes['created_at']." UTC</span>".
                     "<textarea class= 'singleNoteField singleNoteTitle' name='notesTitle' id ='notesTitle' disabled>".$notes['title']."</textarea><br>".
                     "<textarea class= 'singleNoteField singleNoteContent' name='notesContent' id ='notesContent' disabled>".$notes['content']."</textarea>".
                     "<button class='singleNoteBtn' name='singleNoteBtn'>Edit</button>".

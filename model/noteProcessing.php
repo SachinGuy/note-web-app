@@ -24,6 +24,7 @@ if(isset($_POST["submitNote"]))
     {
         $user_id = $_SESSION['userData']['userId'];
         //mysql date format datetime yyyy-mm-dd hh:mi:ss
+        date_default_timezone_set('UTC');
         $created_at = date("Y-m-d h:i:s");
         $sql = "INSERT INTO `notes`(".
                 "`user_id`, `title`, `content`, `created_at`) ".
