@@ -60,7 +60,7 @@ if(!isset($_SESSION['userData']))
                     "<span class = 'singleNoteDate' name='notesDate'> Created At: ". $notes['created_at']." UTC</span>".
                     "<textarea class= 'singleNoteField singleNoteTitle' name='notesTitle' id ='notesTitle' disabled>".$notes['title']."</textarea><br>".
                     "<textarea class= 'singleNoteField singleNoteContent' name='notesContent' id ='notesContent' disabled>".$notes['content']."</textarea>".
-                    "<button class='singleNoteBtn' name='singleNoteBtn'>Edit</button>".
+                    "<input type='submit' class='singleNoteBtn' name='singleNoteBtn' value='Edit'></input>".
                 "</form>".
                 "</div>";
             }

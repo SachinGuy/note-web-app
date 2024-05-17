@@ -14,7 +14,7 @@ if(isset($_POST["registrationSubmit"]))
     $inputErrors = []; //Collection of input errors if any.
 
     //Check if some of the fields are empty
-    if(empty($username) || empty($email) || empty($password) || empty($confirmPassword))
+    if(!filter_var($email, FILTER_VALIDATE_EMAIL) || empty($username) || empty($email) || empty($password) || empty($confirmPassword))
     {
         array_push($inputErrors, "No field can be empty.");
     }

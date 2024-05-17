@@ -6,12 +6,12 @@ if(!isset($_SESSION['userData']))
 {
     $_SESSION["inputErrors"] = array();
     array_push($_SESSION["inputErrors"], "You need to login first before accessing home page.");
-    header('Location: login.php');
+    header('Location: ../login.php');
 
     exit();
 }
 //If request made.
-if($_SERVER['REQUEST_METHOD'] == 'POST')
+if(isset($_POST['singleNoteBtn']))
 {
     $noteId = trim($_POST['noteId'], " ");
     
@@ -80,4 +80,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
         $conn->close();
         exit();
     }
+}else{//If empty link redirect.
+    header('Location: ../index.php');
+    exit();
 }
