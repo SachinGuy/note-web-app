@@ -43,9 +43,9 @@ a:hover{
     position: fixed;
     bottom: 0;
     width: 100%;
-    padding: 8px 0px;
+    padding-top: 14px;
     font-size: medium;
-    height: 70px;
+    height: 40px;
 }
 .copyrightTxt{
     color: white;
@@ -242,5 +242,18 @@ button.singleNoteBtn{
 input.deleteBtn{
     color: white;
     background-color: red;
+}
+/** Cancel Button*/
+.noteSupplementaryAction button{
+    color: white;
+    background-color: rgb(174, 174, 174);
+    border: none;
+    border-radius: 7px;
+    font-size: large;
+    font-weight: 400;
+    cursor: pointer;
+    padding: 7px 0px;
+    width: 100%;
+    margin: 7px 0;
 }
 

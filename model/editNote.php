@@ -60,14 +60,34 @@ if(isset($_POST['singleNoteBtn']))
                 <input type="submit" name="updateNote" value="Update">
                 <input type="submit" class= "deleteBtn" name="deleteNote" value="Delete"></input>
             </div>
+            <div class = 'noteSupplementaryAction'>
+                <button id="cancelNoteBtn">Cancel</button>
+            </div>
         </form>
     </div>
 
     <!--Bottom NavBar-->
     <div class='bottomNav'>
-        <img class = 'logo-img' src='../assets/sachinlogo.png' alt='Sachin Timilsina Logo'>";?>
-        <?php echo "<span class='copyrightTxt'>Copyright ".date('Y')." By Sachin Timilsina. All Rights Reserved.</span>";?>
+        <?php echo "<span class='copyrightTxt'>Copyright &#169; ".date('Y')." By Sachin Timilsina. All Rights Reserved.</span>";?>
     </div>
+    <script>
+        function logoutConfirmation()
+        {
+            if(confirm("Logout?")===true)
+            {
+                window.location.replace("/LoginRegistrationSystem/logout.php");
+            }
+
+        }
+        //Handle note cancel button
+        document.getElementById('cancelNoteBtn').addEventListener('click', 
+            function(event){
+                //Prevent btn default behavior
+                event.preventDefault();
+                window.location.replace("/LoginRegistrationSystem/index.php");
+            }
+        )
+    </script>
 </body>
 </html>
 
