@@ -25,8 +25,17 @@ if(isset($_POST["registrationSubmit"]))
     $stmt->execute();
     $emailResult = $stmt->get_result();
 
+    if($emailResult->num_rows > 0)
+    {
+        array_push($inputErrors, "User already exists.");
+    }
+    if(!filter_var($email, FILTER_VALIDATE_EMAIL))
+    {
+        
+        array_push($inputErrors, "Enter valid email.");
+    }
     //Check all input with default error message.
-    if($password != $confirmPassword || $emailResult->num_rows > 0)
+    if($password != $confirmPassword)
     {
         array_push($inputErrors,"Credentials doesn't match.");
     }
